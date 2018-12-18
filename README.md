@@ -1,6 +1,8 @@
 # ba_release
 This is the source code for the Bachelor Thesis: "An intuitive Scraper with Django and Scrapy"
 
+Following is an setup guide for the tool:
+
 At least Python 3.4 is needed for Scrapy. Python can be installed here: https://www.python.org/downloads/
 After the installation Python should be included in PATH otherwise this should be done to enable "pip" in the command prompt.
 
