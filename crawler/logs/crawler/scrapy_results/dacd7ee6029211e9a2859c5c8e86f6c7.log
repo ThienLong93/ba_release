@@ -1,0 +1,58 @@
+2018-12-18 08:02:19 [scrapy.utils.log] INFO: Scrapy 1.5.1 started (bot: crawler)
+2018-12-18 08:02:19 [scrapy.utils.log] INFO: Versions: lxml 4.2.5.0, libxml2 2.9.5, cssselect 1.0.3, parsel 1.5.1, w3lib 1.19.0, Twisted 18.9.0, Python 3.6.5 (v3.6.5:f59c0932b4, Mar 28 2018, 17:00:18) [MSC v.1900 64 bit (AMD64)], pyOpenSSL 18.0.0 (OpenSSL 1.1.0j  20 Nov 2018), cryptography 2.4.2, Platform Windows-10-10.0.17134-SP0
+2018-12-18 08:02:19 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'crawler', 'LOG_FILE': 'logs\\crawler\\scrapy_results\\dacd7ee6029211e9a2859c5c8e86f6c7.log', 'NEWSPIDER_MODULE': 'crawler.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['crawler.spiders']}
+2018-12-18 08:02:20 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2018-12-18 08:02:20 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-12-18 08:02:20 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-12-18 08:02:20 [scrapy.middleware] INFO: Enabled item pipelines:
+['crawler.pipelines.URLTextPipeline']
+2018-12-18 08:02:20 [scrapy.core.engine] INFO: Spider opened
+2018-12-18 08:02:20 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2018-12-18 08:02:20 [scrapy.core.engine] ERROR: Scraper close failure
+Traceback (most recent call last):
+  File "c:\users\hayt\envs\ba_release\lib\site-packages\scrapy\crawler.py", line 82, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+FileNotFoundError: [Errno 2] No such file or directory: 'results/0a3472ae-c670-4a31-b70f-57575f7932bc.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\hayt\envs\ba_release\lib\site-packages\twisted\internet\defer.py", line 654, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "C:\Users\Hayt\Project\ba_release\webserver\crawler\crawler\pipelines.py", line 21, in close_spider
+    self.file.close()
+AttributeError: 'URLTextPipeline' object has no attribute 'file'
+2018-12-18 08:02:20 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'finish_reason': 'shutdown',
+ 'finish_time': datetime.datetime(2018, 12, 18, 7, 2, 20, 172049),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 6}
+2018-12-18 08:02:20 [scrapy.core.engine] INFO: Spider closed (shutdown)
+2018-12-18 08:02:20 [twisted] CRITICAL: Unhandled error in Deferred:
+2018-12-18 08:02:20 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "c:\users\hayt\envs\ba_release\lib\site-packages\twisted\internet\defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "c:\users\hayt\envs\ba_release\lib\site-packages\scrapy\crawler.py", line 82, in crawl
+    yield self.engine.open_spider(self.spider, start_requests)
+FileNotFoundError: [Errno 2] No such file or directory: 'results/0a3472ae-c670-4a31-b70f-57575f7932bc.json'
