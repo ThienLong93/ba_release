@@ -26,7 +26,7 @@ chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.environ.get('CHROMEDRIVER_PATH'))
 
 # JS which is injected by Selenium when opening the url
-injected_js     = (
+injected_js_head = (
     """        
         (function(d, script) {
             // set host url to body
@@ -72,6 +72,34 @@ injected_js     = (
     """
 )
 
+injected_js_after_body = (
+    """        
+        (function(d, script) {            
+
+            // load script with asset-logic
+            scriptAsset = d.createElement('script');
+            scriptAsset.type = 'text/javascript';
+            scriptAsset.async = true;
+            scriptAsset.onload = function(){
+                // remote script has loaded
+            };
+            scriptAsset.src = '/static/main/js/asset_loader.js';
+            d.body.appendChild(scriptAsset);                                      
+
+            // load script with crawling-logic
+            scriptCrawl = d.createElement('script');
+            scriptCrawl.type = 'text/javascript';
+            scriptCrawl.async = true;
+            scriptCrawl.onload = function(){
+                // remote script has loaded
+            };
+            scriptCrawl.src = '/static/main/js/crawl.js';
+            d.body.appendChild(scriptCrawl);    
+
+        }(document));
+    """
+)
+
 # Create your views here.
 
 # main ui
@@ -93,7 +121,9 @@ def index(request):
         
         # open the webpage with selenium and inject JS into the document
         driver.get(url)
-        driver.execute_script(injected_js)
+        driver.execute_script(injected_js_head)
+        time.sleep(2)
+        driver.execute_script(injected_js_after_body)
 
         # open the default_iframe.html file and copy the html code from selenium into it
         path=os.path.join(djangoSettings.MAIN_DIR_STATIC_TMP, fname)

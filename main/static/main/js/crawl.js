@@ -227,7 +227,10 @@ CRAWL.addHandler = function() {
 
 
 CRAWL.init = function() {    
-    this.addHandler();    
+    CRAWL.addHandler();    
 }
 
-CRAWL.init();
+
+(function() {
+    CRAWL.init();
+})

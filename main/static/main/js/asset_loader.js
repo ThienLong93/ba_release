@@ -99,10 +99,13 @@ LINKS.convertLinksToAbsolute = function(p_linktype) {
  * all functions to run from this script
  */
 LINKS.init = function() {        
-    this.convertLinksToAbsolute("stylesheets");
-    this.convertLinksToAbsolute("scripts");
-    this.convertLinksToAbsolute("images");
-    this.convertLinksToAbsolute("hyperlinks");    
+    LINKS.convertLinksToAbsolute("stylesheets");
+    LINKS.convertLinksToAbsolute("scripts");
+    LINKS.convertLinksToAbsolute("images");
+    LINKS.convertLinksToAbsolute("hyperlinks");    
 }
 
-LINKS.init();
+
+(function() {
+    LINKS.init();
+})
